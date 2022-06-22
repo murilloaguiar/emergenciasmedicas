@@ -11,6 +11,7 @@
 <script>
 import { mapState } from 'vuex'
 import Item from '@/components/Item.vue'
+import EquipamentosVue from './Equipamentos.vue';
 
 export default {
     name: 'ListaItens',
@@ -26,6 +27,9 @@ export default {
             enfermeiros: state=> state.enfermeiros,
             socorristas: state=> state.socorristas,
             medicos: state=> state.medicos,
+            carros: state => state.equipamentos.carros,
+            telefones: state => state.equipamentos.telefones,
+            kitsDeReanimacao: state => state.equipamentos.kitsDeReanimacao
         }),
 
         itens(){
@@ -33,17 +37,28 @@ export default {
                 //dentro propriedades computadas podemos acessar outras propriedades computadas, basta adicionar o operador this.
                 case 'enfermeiros':
                     return this.enfermeiros
-                    break;
+                    
                 case 'socorristas':
                     return this.socorristas
-                    break;
+                    
                 case 'medicos':
                     return this.medicos
-                    break;
-            
+                    
+                    
+                case 'carros':
+                    return this.carros
+                    
+                    
+                case 'telefones':
+                    return this.telefones
+                    
+                    
+                case 'kits-de-reanimacao':
+                    return this.kitsDeReanimacao
+                    
                 default:
                     return []
-                    break;
+                    
             }
         }
     }
