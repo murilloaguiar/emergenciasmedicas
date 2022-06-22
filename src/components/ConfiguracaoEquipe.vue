@@ -41,13 +41,25 @@ export default {
 
 
     //computed: mapState(['equipe'])
-    computed: mapState({
-      e: state => state.equipe,
+    computed: {
 
-      //para combinar o state com o estado local é preciso usar uma função para ter acesso ao escopo do componente. A arrow function cria um contexto isolado
-      tituloCustomizadoLocal(state){
-        return `${this.titulo} ${state.equipe.carro}`
+        //espalhando os objetos retornados pelo mapState dentro da propriedade computed. Isso nos permite 
+        ...mapState({
+        e: state => state.equipe,
+
+        //para combinar o state com o estado local é preciso usar uma função para ter acesso ao escopo do componente. A arrow function cria um contexto isolado
+        tituloCustomizadoLocal(state){
+          return `${this.titulo} ${state.equipe.carro}`
+        }
+      }),
+
+      corTitulo(){
+        let testeLogico = true
+        if(testeLogico) return 'text-danger'
+        return 'text-primary'
       }
-    })
+
+    }
+
 }
 </script>
