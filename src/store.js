@@ -6,12 +6,12 @@ export default new Vuex.Store({
       titulo: "Emergências Médicas",
 
       equipe: {
-         enfermeiro: "Nome do enfermeiro",
-         socorrista: "Nome do socorrista",
-         medico: "Nome do médico",
-         carro: "AAA-0000",
-         telefone: "+55 38 99999-9999",
-         kitDeReanimacao: "Kit 0001",
+         enfermeiro: "",
+         socorrista: "",
+         medico: "",
+         carro: "",
+         telefone: "",
+         kitDeReanimacao: "",
       },
 
       enfermeiros: [
