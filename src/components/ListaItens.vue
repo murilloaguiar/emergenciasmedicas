@@ -11,7 +11,6 @@
 <script>
 import { mapState } from 'vuex'
 import Item from '@/components/Item.vue'
-import EquipamentosVue from './Equipamentos.vue';
 
 export default {
     name: 'ListaItens',
@@ -25,7 +24,7 @@ export default {
     computed:{
         ...mapState({
             enfermeiros: state=> state.enfermeiros,
-            socorristas: state=> state.socorristas,
+            //socorristas: state=> state.socorristas,
             medicos: state=> state.medicos,
             carros: state => state.equipamentos.carros,
             telefones: state => state.equipamentos.telefones,
@@ -39,7 +38,7 @@ export default {
                     return this.enfermeiros
                     
                 case 'socorristas':
-                    return this.socorristas
+                    return this.$store.getters.socorristasPorTurno
                     
                 case 'medicos':
                     return this.medicos
