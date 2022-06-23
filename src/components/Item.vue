@@ -14,14 +14,55 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
    name: "Item",
+
    props: {
       dados: Object,
       tipo: String
    },
+
    methods:{
+
+      //spread
+      //...mapMutations(['setItemEquipe']),
+      ...mapMutations({
+         setItemEquipe: 'setItemEquipe',
+
+         setItemEquipeComVerificacao: (commit, payload)=>{
+            //camada de lógica
+            /*
+               reserva do item
+               verificar se o item está disponível
+                  se sim, marcar no back-end que ele está sendo utilizado para uma equipe
+                  se não, apresentar uma mensagem de controle indicando que o item já está em uso
+            */
+
+           commit('setItemEquipe', payload)
+         }
+
+      }),
+
+
       adicionarItemEquipe(){
+         let item = {
+            tipo: this.tipo,
+            dados: this.dados
+         }
+
+         //this.$store.commit('setItemEquipe', item)
+         /*this.$store.commit({
+            type: 'setItemEquipe',
+            item //par chave valor
+         })*/
+
+         //this.setItemEquipe(item)
+         this.setItemEquipeComVerificacao(item)
+      },
+
+      adicionarItemEquipeIncorreto(){
          //console.log(this.tipo, this.dados)
 
          //abordagem incorreta
