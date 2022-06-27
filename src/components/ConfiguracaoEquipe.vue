@@ -23,7 +23,13 @@
         </div>
         <div class="row mt-3">
           <div class="col">
-            <button type="button" class="btn btn-primary">Montar equipe</button>
+            <button 
+              type="button" 
+              class="btn btn-primary" 
+              @click="montarEquipe"
+              >
+                Montar equipe
+              </button>
           </div>
         </div>              
       </div>
@@ -65,6 +71,16 @@ export default {
         return 'indefinida.png'
       }
 
+    },
+
+    methods:{
+      montarEquipe(){
+        //copiando o valor do objeto equipe contido na store do vuex para uma nova variável. Nos permite trabalhar direto com os dados e não com a referência deles
+        let equipe = Object.assign({}, this.$store.state.equipe)
+
+        this.$store.commit('adicionarEquipeEmEquipes', equipe)
+
+      }
     }
 
 }
