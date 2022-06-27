@@ -18,7 +18,7 @@
       <div class="col-4 text-center">
         <div class="row">
           <div class="col">
-            <img class="img-fluid" :src="require('@/assets/ambulancias/indefinida.png')">
+            <img class="img-fluid" :src="require(`@/assets/ambulancias/${imgAmbulancia}`)">
           </div>
         </div>
         <div class="row mt-3">
@@ -57,6 +57,12 @@ export default {
         let testeLogico = true
         if(testeLogico) return 'text-danger'
         return 'text-primary'
+      }, 
+
+      imgAmbulancia(){
+        if(this.e.kitDeReanimacao) return 'uti.png'
+        else if(this.e.carro) return 'simples.png'
+        return 'indefinida.png'
       }
 
     }
