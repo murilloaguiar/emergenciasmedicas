@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 import ConfiguracaoEquipe from "./ConfiguracaoEquipe.vue";
 import Equipamentos from "./Equipamentos.vue";
 import Equipes from "./Equipes.vue";
@@ -62,6 +62,31 @@ export default {
       "setTelefones",
       "setKitsDeReanimacao"
     ]),
+
+    //array
+    //...mapActions(['fetchEquipamentos','fetchProfissionais'])
+
+    //objeto
+    // ...mapActions({
+    //   //poderia ser qualquer nome
+    //   fetchEquipamentos: 'fetchEquipamentos',
+    //   fetchProfissionais: 'fetchProfissionais'
+    // })
+
+    //objeto e função
+    ...mapActions({
+      
+      fetchEquipamentos: (dispatch, payload)=>{
+        //implementar lógica
+        dispatch('fetchEquipamentos', payload)
+        //implementar outra lógica
+      },
+
+      fetchProfissionais: dispatch => {
+        dispatch('fetchProfissionais')
+      }
+    })
+
   },
 
   computed: {
@@ -71,8 +96,22 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('fetchEquipamentos')
-    this.$store.dispatch('fetchProfissionais')
+    // this.$store.dispatch({
+    //   //payload
+    //   type: 'fetchEquipamentos', //action a ser disparada
+    //   carros: true,
+    //   telefones: true,
+    //   kitsDeReanimacao: true
+    // })
+    // this.$store.dispatch('fetchProfissionais')
+
+    this.fetchEquipamentos({
+      carros:true,
+      telefones:true,
+      kitsDeReanimacao:true
+    })
+
+    this.fetchProfissionais()
 
     // fetch("http://localhost:3000/equipamentos")
     //   .then((response) => response.json())
